@@ -1,0 +1,44 @@
+.add-song-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  border: 1px solid #cdcdcd;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.add-song-input {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  /* border-radius: 5px; */
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.add-song-textarea {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  /* border-radius: 5px; */
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.submit-button {
+  color: rgb(253, 253, 253);
+  background-color: #7a7a7a;
+  width: 70px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.submit-button:hover {
+  /* padding: 10px; */
+  background-color: #555555;
+  cursor: pointer;
+}
