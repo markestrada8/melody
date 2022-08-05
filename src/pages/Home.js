@@ -12,7 +12,7 @@ const Home = () => {
       <div className="title-container">
         <h1 className="home-title">Melody</h1>
         <Link
-          to="composer"
+          to="compose"
           className="home-nav-link"
           // style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >

@@ -25,15 +25,15 @@ export const createSong = (song) => async (dispatch) => {
   }
 };
 
-// export const updatePost = (id, post) => async (dispatch) => {
-//   try {
-//     const { data } = await api.updatePost(id, post);
+export const updateSong = (id, song) => async (dispatch) => {
+  try {
+    const { data } = await api.updateSong(id, song);
 
-//     dispatch({ type: UPDATE, payload: data });
-//   } catch (error) {
-//     console.log('action update error: ', error);
-//   }
-// };
+    dispatch({ type: 'UPDATE', payload: data });
+  } catch (error) {
+    console.log('action update error: ', error);
+  }
+};
 
 export const deleteSong = (id) => async (dispatch) => {
   try {
@@ -44,10 +44,10 @@ export const deleteSong = (id) => async (dispatch) => {
   }
 };
 
-export const toggleEditMode = () => async (dispatch) => {
-  try {
-    dispatch({ type: 'TOGGLE_EDIT_MODE', payload: null });
-  } catch (error) {
-    console.log('action toggle error: ', error);
-  }
-};
+// export const toggleEditMode = () => async (dispatch) => {
+//   try {
+//     dispatch({ type: 'TOGGLE_EDIT_MODE', payload: null });
+//   } catch (error) {
+//     console.log('action toggle error: ', error);
+//   }
+// };

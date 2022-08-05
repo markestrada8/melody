@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateSong } from '../API/api';
+import { updateSong } from '../redux/actions/songs';
 import Editor from '../components/Edit/Editor';
 import SongForm from '../components/Library/SongForm';
 import './Revise.css';
@@ -10,6 +10,7 @@ const Revise = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+
   const songs = useSelector((state) => state.songs.songs);
   const [title, setTitle] = useState(
     songs.filter((song) => song.id === location.state.songToEditId)[0].title
@@ -21,27 +22,28 @@ const Revise = () => {
   const [songGrid, setSongGrid] = useState(
     songs.filter((song) => song.id === location.state.songToEditId)[0].song
   );
-  // console.log('REVISE songGrid: ', songGrid);
-  console.log(
-    'REVISE location title: ',
-    songs.filter((song) => song.id === location.state.songToEditId)[0].title
-  );
 
-  const handleUpdate = (id, songDataToUpdate) => {
+  // console.log('REVISE songGrid: ', songGrid);
+  // console.log(
+  //   'REVISE location title: ',
+  //   songs.filter((song) => song.id === location.state.songToEditId)[0].title
+  // );
+
+  const handleUpdate = () => {
     const songData = {
-      id: id,
+      id: location.state.songToEditId,
       title: title,
       description: description,
-      song: songDataToUpdate,
+      song: songGrid,
     };
-    dispatch(updateSong(id, songData));
+    dispatch(updateSong(location.state.songToEditId, songData));
     navigate('/library');
   };
 
   return (
     <div className="reviser">
-      <form
-        className="composer-form"
+      <div
+        className="reviser-form"
         onSubmit={() => handleUpdate(location.state.songToEditId, songGrid)}
       >
         <div className="reviser-title">Revise</div>
@@ -52,10 +54,10 @@ const Revise = () => {
           setDescription={setDescription}
         />
         <Editor songGrid={songGrid} setSongGrid={setSongGrid} />
-        <button className="submit-button" type="submit">
+        <button className="submit-button" type="submit" onClick={handleUpdate}>
           Save
         </button>
-      </form>
+      </div>
     </div>
   );
 };

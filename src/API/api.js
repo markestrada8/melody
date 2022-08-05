@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const url = 'https://mae-melody-server.herokuapp.com/song';
+// const url = 'https://mae-melody-server.herokuapp.com/song';
+const url = 'http://localhost:5000/song';
 
 const config = {
   headers: {
@@ -21,6 +22,6 @@ export const createSong = (newSong) =>
 // });
 
 export const updateSong = (id, updatedSong) =>
-  axios.patch(`${url}/${id}`, updatedSong);
+  axios.put(url + `/${id}`, updatedSong, config);
 
 export const deleteSong = (id) => axios.delete(`${url}/${id}`);
