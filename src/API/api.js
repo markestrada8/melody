@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/song';
+const url = 'https://mae-melody-server.herokuapp.com/song';
 
 const config = {
   headers: {
