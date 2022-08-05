@@ -2,7 +2,7 @@
   /* position: fixed; */
   height: 90px;
   width: 100%;
-  background-color: rgb(219, 219, 219);
+  background-color: #ced5ed;
   display: block;
   /* margin-bottom: 90px; */
 }
@@ -21,4 +21,10 @@
   font-size: 1.4em;
   border-bottom: 3px solid transparent;
   transition: 0.4s ease-in-out;
+}
+
+@media only screen and (max-width: 767px) {
+  .navigation-container {
+    display: hidden;
+  }
 }

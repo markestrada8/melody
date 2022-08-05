@@ -55,6 +55,7 @@
   height: 40px;
   padding: 10px;
   border-radius: 5px;
+  border: none;
 }
 
 .submit-button:hover {

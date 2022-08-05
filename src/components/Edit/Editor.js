@@ -1,91 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Editor.css';
 import * as Tone from 'tone';
 import classNames from 'classnames';
 import NoteButton from '../NoteButton';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { createSong } from '../../redux/actions/songs';
+// import { useLocation } from 'react-router-dom';
+
 import { generateGrid } from '../../functions/functions';
-// import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
-// import SongForm from '../components/Library/SongForm';
-// function touchStarted() {
-//   getAudioContext().resume();
-// }
-
-// const OCTAVE = '4';
 
 const Editor = ({ songGrid, setSongGrid }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentColumn, setCurrentColumn] = useState(null);
   const [Sequencer, setSequencer] = useState(null);
-  // const [grid, setGrid] = useState(generateGrid());
 
-  const location = useLocation();
+  // const location = useLocation();
 
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const songsStore = useSelector((state) => state.songs.songs);
-  // console.log('location.state: ', location.state);
-  // const [editMode, setEditMode] = useState(
-  //   location.state && location.state.editModeIsActive ? true : false
-  // );
-  // const [grid, setGrid] = useState(
-  //   location.state && location.state.songToEditId ? songsStore.find((song) => {
-  //
-  //         return song.id === location.state.songToEditId;
-  //       }).song
-  //     : generateGrid()
-  // );
-
-  // console.log(
-  //   'composer songtoeditid: ',
-  //   location.state.songToEditId,
-  //   songs.filter((song) => song.id === location.state.songToEditId)
-  // );
-
-  // console.log(
-  //   'song: ',
-  //   songs.filter((song) => {
-  //     return song.id === location.state.songToEditId;
-  //   })[0]
-  // );
-
-  // console.log(
-  //   'song data format: ',
-  //   songsStore.filter((song) => {
-  //     return song.id === location.state.songToEditId;
-  //   })[0]
-  // );
-  // console.log(
-  //   'song to edit / editMode COMPOSER: ',
-  //   grid,
-  //   location.state.editModeIsActive
-  // );
-  // if (location.state) {
-  //   setGrid(location.state.songData);
-  // } else {
-  //   setGrid(generateGrid());
-  // }
-  // console.log('composer location data: ', location.state);
-
-  // useEffect(() => {
-  //   console.log('inital location state:', location.state);
-  //   if (location.state.songDataToEdit !== null) {
-  //     setGrid((prevState) => {
-  //       return [prevState, ...location.state.songDataToEdit];
-  //     });
-  //     console.log('composer state: ', grid);
-  //     console.log('composer location: ', location.state.songDataToEdit);
-  //   }
-  // }, []);
-
+  // const OCTAVE = '4'
   const handleNoteClick = (clickedColumn, clickedNote, note) => {
     const synth = new Tone.PolySynth().toDestination();
     synth.triggerAttackRelease(note, '16n');
-    // console.log(clickedColumn, clickedNote, note);
     let updatedGrid = songGrid.map((column, columnIndex) =>
       column.map((cell, cellIndex) => {
         let cellCopy = cell;
@@ -125,13 +59,10 @@ const Editor = ({ songGrid, setSongGrid }) => {
     setSequencer(Sequencer);
 
     const music = [];
+    // eslint-disable-next-line
     songGrid.map((column) => {
       let columnNotes = [];
-      column.map(
-        (cell) =>
-          // shouldPlay.isActive && columnNotes.push(shouldPlay.note + OCTAVE)
-          cell.isActive && columnNotes.push(cell.note)
-      );
+      column.map((cell) => cell.isActive && columnNotes.push(cell.note));
       music.push(columnNotes);
     });
 
@@ -157,17 +88,8 @@ const Editor = ({ songGrid, setSongGrid }) => {
     }
   };
 
-  // const handleSave = () => {
-  //   navigate('/library', {
-  //     state: {
-  //       songDataToSave: grid,
-  //     },
-  //   });
-  // };
-
   return (
     <div className="editor">
-      {/* composer element */}
       <div className="editor-container">
         <div className="note-wrapper">
           {songGrid.map((column, columnIndex) => (
@@ -197,30 +119,7 @@ const Editor = ({ songGrid, setSongGrid }) => {
             Stop
             <StopIcon />
           </button>
-          {/* {editMode ? (
-            <button className="button" onClick={() => handleSave()}>
-              <Navigate
-              to={{
-                pathname: '/library',
-                state: { songData: grid },
-              }}
-            />
-              Save to Library
-            </button>
-          ) : (
-            <button
-              className="button"
-              onClick={() => handleUpdate(location.state.songToEditId)}
-            >
-              <Navigate
-              to={{
-                pathname: '/library',
-                state: { songData: grid },
-              }}
-            />
-              Update Song
-            </button>
-          )} */}
+
           <button className="button" onClick={() => handleClear()}>
             Clear
           </button>

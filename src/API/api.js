@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const url = 'https://mae-melody-server.herokuapp.com/song';
-const url = 'http://localhost:5000/song';
+// const url = 'https://localhost:5000/song';
+const url = 'https://mae-melody-server.herokuapp.com/song';
 
 const config = {
   headers: {
@@ -14,12 +14,6 @@ export const getSongs = () => axios.get(url + '/get');
 
 export const createSong = (newSong) =>
   axios.post(url + '/add', newSong, config);
-// .then((response) => {
-//   console.log('post response', response);
-// })
-// .catch((error) => {
-//   console.log('post error: ', error);
-// });
 
 export const updateSong = (id, updatedSong) =>
   axios.put(url + `/${id}`, updatedSong, config);

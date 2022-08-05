@@ -3,6 +3,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 .library-title-container {
   width: 100%;
@@ -14,12 +16,31 @@
 .library-title {
   font-family: 'Homemade Apple', cursive;
   margin: 80px 0;
-  width: 25%;
+  width: 300px;
   text-align: center;
   font-size: 3em;
   background-color: #ecd82b;
   opacity: 80%;
   border-radius: 30px;
+}
+.create-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-button {
+  margin: 10px 0;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  font-size: 2em;
+  background-color: #3a85da;
+  color: white;
+  opacity: 80%;
+  border-radius: 15px;
+  border: none;
 }
 
 .button {
@@ -37,4 +58,35 @@
 
 .button:hover {
   background-color: #0b4281;
+}
+
+.song-items-container {
+  color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.song-item {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  width: 300px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .song-items-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .song-items-container {
+    grid-template-columns: 1fr;
+  }
 }

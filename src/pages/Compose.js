@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { generateGrid } from '../functions/functions';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { createSong } from '../redux/actions/songs';
 import SongForm from '../components/Library/SongForm';
