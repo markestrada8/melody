@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSong } from '../../API/api';
 import { createSong, getSongs } from '../../redux/actions/songs';
+import { TextField } from '@material-ui/core';
 import './SongForm.css';
 
-const SongForm = ({ songDataToSave, editMode, setEditMode }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const SongForm = ({ title, setTitle, description, setDescription }) => {
   // const [songData, setSongData] = useState([]);
-  const songs = useSelector((state) => state.songs);
+  // const songs = useSelector((state) => state.songs);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  console.log('form data: ', songDataToSave, editMode);
+  // console.log('form data: ', title, description);
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -38,39 +37,12 @@ const SongForm = ({ songDataToSave, editMode, setEditMode }) => {
   // };
 
   // REPLACES HANDLE SUBMIT WITH REDUX ACTION / API (REPLACES handleSubmit)
-  const handleSave = (event) => {
-    event.preventDefault();
-    const newSong = {
-      title: title,
-      description: description,
-      song: songDataToSave,
-    };
-    dispatch(createSong(newSong));
-    setDescription('');
-    setTitle('');
-    setEditMode(false);
-    dispatch(getSongs());
-    // songDataToSave = null;
-  };
-
-  const handleUpdate = (id, songDataToUpdate) => {
-    const songData = {
-      id: id,
-      title: title,
-      description: description,
-      song: songDataToUpdate,
-    };
-    dispatch(updateSong(id, songData));
-  };
 
   return (
-    <form
-      className="add-song-form"
-      onSubmit={editMode ? handleUpdate : handleSave}
-    >
-      <h1>Enter Song Information</h1>
+    <div className="form-group">
+      <h2>Enter Song Information</h2>
       {/* {songData && (
-          <div className="song-summary">
+src/pages/Compose.js          <div className="song-summary">
             {songData.map((column, columnIndex) => (
               <div className="note-column" key={columnIndex + 'column'}>
                 {column.map(({ note, isActive }, noteIndex) => (
@@ -84,26 +56,34 @@ const SongForm = ({ songDataToSave, editMode, setEditMode }) => {
             ))}
           </div>
         )} */}
-      <input
-        className="add-song-input"
-        onChange={(event) => setTitle(event.target.value)}
-        type="text"
-        name="title"
-        value={editMode ? songDataToSave.title : title}
-        placeholder="Title"
-      />
+      <div className="inputs-container">
+        <TextField
+          id="standard-basic"
+          className="add-song-input"
+          onChange={(event) => setTitle(event.target.value)}
+          // name="creator"
+          // variant="outlined"
+          label="Title"
+          // width="75"
 
-      <textarea
-        className="add-song-textarea"
-        onChange={(event) => setDescription(event.target.value)}
-        value={editMode ? songDataToSave.description : description}
-        name="description"
-        placeholder="Description"
-      />
-      <button className="submit-button" type="submit">
-        Save
-      </button>
-    </form>
+          value={title}
+          placeholder="Title"
+        />
+
+        <TextField
+          id="standard-basic"
+          className="add-song-textarea"
+          onChange={(event) => setDescription(event.target.value)}
+          // name="creator"
+          // variant="outlined"
+          label="Description"
+          // width="75"
+          value={description}
+          name="description"
+          placeholder="Description"
+        />
+      </div>
+    </div>
   );
 };
 

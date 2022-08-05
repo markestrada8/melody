@@ -8,9 +8,11 @@ import {
   createSong,
   // updateSong,
   deleteSong,
+  toggleEditMode,
 } from '../redux/actions/songs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@material-ui/core';
 import NoteButton from '../components/NoteButton';
 import SongForm from '../components/Library/SongForm';
 import axios from 'axios';
@@ -18,29 +20,30 @@ import './Library.css';
 
 //LIBRARY RECEIVES CURRENT SONG DATA FROM COMPOSER AS PROPS
 export default function Library() {
-  // const [isUpdated, setIsUpdated] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
   const [songsData, setSongsData] = useState([]);
   const [songData, setSongData] = useState([]);
-  const [editMode, setEditMode] = useState(false);
+
   const location = useLocation();
   // console.log('library state: ', location.state);
 
   // const [currentSong, setCurrentSong] = useState(
   //   state.songData ? state.songData : null
   // );
-  const songs = useSelector((state) => state.songs);
+  const songsStore = useSelector((state) => state.songs);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
+  // console.log('redux songsStore:', songsStore);
+  // console.log('songs in library:', songsStore.songs);
   // const [songsToDisplay, setSongsToDisplay] = useState('');
-
+  // console.log('length: ', songsStore.songs.length);
   // AUTOMATIC GET WITH MOUNT (REPLACES getCurrentSongs)
   useEffect(() => {
     dispatch(getSongs());
     // setSongsData(songs);
-    console.log('fetched @ SongForm songs: ', songs);
-  }, []);
+    console.log('fetched @ Library songs: ', songsStore.songs);
+  }, [isUpdated]);
 
   // useEffect(() => {
   //   if (location.state.songDataToSave !== null) {
@@ -50,14 +53,22 @@ export default function Library() {
   // }, []);
 
   const handleEditClick = (id) => {
-    setEditMode((prevState) => {
-      return !prevState;
-    });
-    console.log('Library: ', editMode);
-    navigate('/composer', {
+    // setEditMode((prevState) => {
+    //   return !prevState;
+    // });
+    // console.log('Library set var: ', testVar);
+    // setTestVar((oldState) => !oldState);
+    // console.log('Library set var: ', testVar);
+    // setTestVar((oldState) => !oldState);
+    // console.log('Library set var: ', !testVar);
+    // console.log('Library: ', editMode);
+    // console.log('Library start edit mode: ', songsStore.editMode);
+    // dispatch(toggleEditMode());
+    // console.log('Library changed edit mode: ', songsStore.editMode);
+    navigate('/revise', {
       state: {
         songToEditId: id,
-        editModeIsActive: editMode,
+        // editModeIsActive: songsStore.editMode,
         // setEditMode: setEditMode,
       },
     });
@@ -67,6 +78,8 @@ export default function Library() {
   const handleDelete = (id) => {
     // event.preventDefault();
     dispatch(deleteSong(id));
+    dispatch(getSongs());
+    setIsUpdated((prevState) => !prevState);
   };
 
   return (
@@ -83,8 +96,8 @@ export default function Library() {
             gridTemplateColumns: '1fr 1fr 1fr 1fr',
           }}
         >
-          {songs.length > 0
-            ? songs.map((song) => {
+          {songsStore.songs
+            ? songsStore.songs.map((song) => {
                 return (
                   <div key={song.id}>
                     <div
@@ -95,7 +108,7 @@ export default function Library() {
                         justifyContent: 'center',
                         alignItems: 'center',
                         border: '1px solid black',
-                        borderRadius: '5px',
+                        borderRadius: '15px',
                         padding: '20px',
                         margin: '20px',
                         width: '300px',

@@ -1,0 +1,44 @@
+.reviser {
+  /* position: relative; */
+  /* top: 70px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  overflow-x: scroll;
+  margin: 20px;
+  /* background-color: #3e3e3d; */
+  /* margin: 0; */
+  padding: 30px;
+}
+
+.reviser-title {
+  font-family: 'Homemade Apple', cursive;
+  display: inline-block;
+  margin: 50px 0;
+  width: 25vw;
+  text-align: center;
+  font-size: 3em;
+  background-color: #ecd82b;
+  opacity: 80%;
+  border-radius: 30px;
+}
+
+.reviser-container {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 100%; */
+}
+
+.reviser-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

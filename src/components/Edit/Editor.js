@@ -1,66 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import './Composer.css';
+import './Editor.css';
 import * as Tone from 'tone';
 import classNames from 'classnames';
-import NoteButton from '../components/NoteButton';
+import NoteButton from '../NoteButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSong } from '../redux/actions/songs';
+import { createSong } from '../../redux/actions/songs';
+import { generateGrid } from '../../functions/functions';
+// import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
-import SongForm from '../components/Library/SongForm';
+// import SongForm from '../components/Library/SongForm';
 // function touchStarted() {
 //   getAudioContext().resume();
 // }
 
-const generateGrid = () => {
-  const grid = [];
-
-  for (let i = 0; i < 16; i++) {
-    const column = [
-      { note: 'C5', isActive: false },
-      { note: 'B4', isActive: false },
-      { note: 'A4', isActive: false },
-      { note: 'G4', isActive: false },
-      { note: 'F4', isActive: false },
-      { note: 'E4', isActive: false },
-      { note: 'D4', isActive: false },
-      { note: 'C4', isActive: false },
-      { note: 'B3', isActive: false },
-      { note: 'A3', isActive: false },
-      { note: 'G3', isActive: false },
-      { note: 'F3', isActive: false },
-      { note: 'E3', isActive: false },
-      { note: 'D3', isActive: false },
-      { note: 'C3', isActive: false },
-    ];
-    grid.push(column);
-  }
-  return grid;
-};
-
 // const OCTAVE = '4';
 
-const Composer = () => {
+const Editor = ({ songGrid, setSongGrid }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentColumn, setCurrentColumn] = useState(null);
   const [Sequencer, setSequencer] = useState(null);
+  // const [grid, setGrid] = useState(generateGrid());
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const songs = useSelector((state) => state.songs);
   const location = useLocation();
-  console.log('location.state: ', location.state);
-  const [editMode, setEditMode] = useState(
-    location.state && location.state.editModeIsActive ? true : false
-  );
-  const [grid, setGrid] = useState(
-    location.state && location.state.songToEditId
-      ? songs.find((song) => {
-          return song.id === location.state.songToEditId;
-        }).song
-      : generateGrid()
-  );
+
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const songsStore = useSelector((state) => state.songs.songs);
+  // console.log('location.state: ', location.state);
+  // const [editMode, setEditMode] = useState(
+  //   location.state && location.state.editModeIsActive ? true : false
+  // );
+  // const [grid, setGrid] = useState(
+  //   location.state && location.state.songToEditId ? songsStore.find((song) => {
+  //
+  //         return song.id === location.state.songToEditId;
+  //       }).song
+  //     : generateGrid()
+  // );
 
   // console.log(
   //   'composer songtoeditid: ',
@@ -75,11 +53,17 @@ const Composer = () => {
   //   })[0]
   // );
 
-  console.log(
-    'song to edit / editMode COMPOSER: ',
-    grid,
-    location.state.editModeIsActive
-  );
+  // console.log(
+  //   'song data format: ',
+  //   songsStore.filter((song) => {
+  //     return song.id === location.state.songToEditId;
+  //   })[0]
+  // );
+  // console.log(
+  //   'song to edit / editMode COMPOSER: ',
+  //   grid,
+  //   location.state.editModeIsActive
+  // );
   // if (location.state) {
   //   setGrid(location.state.songData);
   // } else {
@@ -102,7 +86,7 @@ const Composer = () => {
     const synth = new Tone.PolySynth().toDestination();
     synth.triggerAttackRelease(note, '16n');
     // console.log(clickedColumn, clickedNote, note);
-    let updatedGrid = grid.map((column, columnIndex) =>
+    let updatedGrid = songGrid.map((column, columnIndex) =>
       column.map((cell, cellIndex) => {
         let cellCopy = cell;
 
@@ -112,18 +96,18 @@ const Composer = () => {
         return cellCopy;
       })
     );
-    setGrid((prevState) => {
+    setSongGrid((prevState) => {
       return updatedGrid;
     });
   };
 
   const handleClear = () => {
     stopMusic();
-    setGrid(generateGrid());
+    setSongGrid(generateGrid());
   };
 
   const playMusic = async () => {
-    console.log(grid);
+    console.log(songGrid);
     const synth = new Tone.PolySynth().toDestination();
     const Sequencer = new Tone.Sequence(
       (time, step) => {
@@ -141,7 +125,7 @@ const Composer = () => {
     setSequencer(Sequencer);
 
     const music = [];
-    grid.map((column) => {
+    songGrid.map((column) => {
       let columnNotes = [];
       column.map(
         (cell) =>
@@ -182,29 +166,11 @@ const Composer = () => {
   // };
 
   return (
-    <div className="composer">
-      <div className="composer-title">Compose</div>
+    <div className="editor">
       {/* composer element */}
-      <div className="composer-container">
-        {location.state && location.state.editMode ? (
-          <SongForm
-            songDataToSave={
-              songs.filter((song) => {
-                return song.id === location.state.songToEditId;
-              })[0]
-            }
-            setEditMode={setEditMode}
-            editMode={location.state.editModeIsActive}
-          />
-        ) : (
-          <SongForm
-            songDataToSave={grid}
-            editMode={location.state.editModeIsActive}
-            setEditMode={setEditMode}
-          />
-        )}
+      <div className="editor-container">
         <div className="note-wrapper">
-          {grid.map((column, columnIndex) => (
+          {songGrid.map((column, columnIndex) => (
             <div
               className={classNames('note-column', {
                 'note-column--active': currentColumn === columnIndex,
@@ -264,4 +230,4 @@ const Composer = () => {
   );
 };
 
-export default Composer;
+export default Editor;

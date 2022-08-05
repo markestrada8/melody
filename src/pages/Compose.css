@@ -9,7 +9,7 @@
   overflow-x: scroll;
   margin: 20px;
   /* background-color: #3e3e3d; */
-  margin: 0;
+  /* margin: 0; */
   padding: 30px;
 }
 
@@ -36,7 +36,14 @@
   /* height: 100%; */
 }
 
-.note-wrapper {
+.composer-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .note-wrapper {
   height: 100%;
   display: flex;
 }
@@ -60,7 +67,7 @@
   padding: 2px;
   cursor: pointer;
   border-radius: 5px;
-  /* box-shadow: 0 0 1px 1px #ccc; */
+  box-shadow: 0 0 1px 1px #ccc;
 }
 
 .note--active {
@@ -68,9 +75,9 @@
   color: #ffffff;
 }
 
-/* .note:active {
+.note:active {
   background: lightgrey;
-} */
+}
 
 .button-container {
   margin-top: 10px;
@@ -91,9 +98,9 @@
   background-color: #3a85da;
   border-radius: 10px;
   cursor: pointer;
-  /* box-shadow: 0 0 1px 1px #ccc; */
+  box-shadow: 0 0 1px 1px #ccc;
 }
 
 .button:hover {
   background-color: #0b4281;
-}
+} */

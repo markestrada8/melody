@@ -1,19 +1,25 @@
-export default (songs = [], action) => {
+const initialState = {
+  editMode: false,
+  songs: [],
+};
+
+export default function songs(state = initialState, action) {
   switch (action.type) {
     case 'GET_ALL':
-      return action.payload;
-    case 'GET_SONG':
-      return { ...songs, song: action.payload.song };
+      return { ...state, songs: [...action.payload] };
+    // case 'GET_SONG':
+    //   return { ...state, song: action.payload.song };
     case 'CREATE':
-      return [...songs, action.payload];
+      return { ...state, songs: [...state.songs, action.payload] };
     case 'UPDATE':
-      return songs.map((song) =>
+      return state.songs.map((song) =>
         song.id === action.payload.id ? action.payload : song
       );
     case 'DELETE':
-      return songs.filter((song) => song.id !== action.payload);
-
+      return state.songs.filter((song) => song.id !== action.payload);
+    case 'TOGGLE_EDIT_MODE':
+      return { ...state, editMode: !state.editMode };
     default:
-      return songs;
+      return state;
   }
-};
+}

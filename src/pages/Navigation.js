@@ -23,7 +23,7 @@ const Navigation = () => {
             Home
           </NavLink>
           <NavLink
-            to="composer"
+            to="compose"
             className="nav-link"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
