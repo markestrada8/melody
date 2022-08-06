@@ -24,7 +24,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  /* .navigation-container {
-    display: hidden;
-  } */
+  .nav-link {
+    margin: 10px;
+  }
 }

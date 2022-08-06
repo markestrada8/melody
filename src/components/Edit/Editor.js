@@ -41,7 +41,7 @@ const Editor = ({ songGrid, setSongGrid }) => {
   };
 
   const playMusic = async () => {
-    console.log(songGrid);
+    // console.log(songGrid);
     const synth = new Tone.PolySynth().toDestination();
     const Sequencer = new Tone.Sequence(
       (time, step) => {
