@@ -21,7 +21,7 @@
     "tone": "^14.7.77"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts test",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
