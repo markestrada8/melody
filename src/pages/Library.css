@@ -41,6 +41,11 @@
   opacity: 80%;
   border-radius: 15px;
   border: none;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  background-color: #0b4281;
 }
 
 .button {
