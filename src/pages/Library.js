@@ -42,13 +42,19 @@ export default function Library() {
     setIsUpdated((prevState) => !prevState);
   };
 
+  const handleComposeClick = () => {
+    navigate('/compose');
+  };
+
   return (
     <div className="library">
       <div className="library-title-container">
         <div className="library-title">Library</div>
       </div>
       <div className="create-button-container">
-        <button className="create-button">New</button>
+        <button className="create-button" onClick={handleComposeClick}>
+          New
+        </button>
       </div>
 
       <div className="song-items-container">

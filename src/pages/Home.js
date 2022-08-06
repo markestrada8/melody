@@ -10,7 +10,7 @@ const Home = () => {
         <source src={backgroundVideo} type="video/mp4" />
       </video>
       <div className="title-container">
-        <h1 className="home-title">Melody</h1>
+        <h2 className="home-title">Melody</h2>
         <Link
           to="compose"
           className="home-nav-link"

@@ -24,6 +24,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .navbar {
+    width: 100vw;
+  }
+
   .nav-link {
     margin: 10px;
   }
