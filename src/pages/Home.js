@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import backgroundVideo from '../video/pexels-james-borastero-9322934.mp4';
+import Footer from '../components/Footer/Footer';
 import './Home.css';
 
 const Home = () => {
@@ -19,6 +20,11 @@ const Home = () => {
           COMPOSE
         </Link>
       </div>
+      <div className="hero-section">
+        <h1>A TOOL FOR MUSIC</h1>
+        <p>This is a tool to write and edit music. Explore and have fun!</p>
+      </div>
+      <Footer />
     </div>
   );
 };

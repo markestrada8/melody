@@ -2,12 +2,28 @@
   /* position: fixed; */
   height: 90px;
   width: 100%;
-  background-color: #ced5ed;
-  display: block;
+  background-color: #1a285a;
+  color: #ffffff;
+  display: block flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
   /* margin-bottom: 90px; */
 }
 
-.navigation-container {
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.music-icon {
+  font-size: 2em;
+  margin-right: 10px;
+}
+
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +36,10 @@
   margin: 30px;
   font-size: 1.4em;
   border-bottom: 3px solid transparent;
-  transition: 0.4s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.nav-link:hover {
+  color: #c2c2c2;
 }
 
 @media only screen and (max-width: 767px) {

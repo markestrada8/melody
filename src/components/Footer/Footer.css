@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #2b2d32;
+  color: #fff;
+  padding: 30px;
+  width: 100vw;
+}
+
+.footer i {
+  color: white;
+  margin: 0 20px;
+}
+
+.footer .contact {
+  margin-bottom: 30px;
+}
+
+.footer .contact a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer .contact a:hover {
+  color: rgb(252, 240, 104);
+}
+
+.footer .social-links {
+  margin-bottom: 30px;
+}
