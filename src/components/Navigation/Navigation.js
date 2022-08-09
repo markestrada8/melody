@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import { GiMusicSpell } from 'react-icons/gi';
 import { FaBars, FaTimes } from 'react-icons/fa';
