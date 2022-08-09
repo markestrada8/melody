@@ -11,18 +11,19 @@
   /* background-color: #3e3e3d; */
   /* margin: 0; */
   padding: 30px;
+  color: #000000;
 }
 
 .composer-title {
   font-family: 'Homemade Apple', cursive;
   display: inline-block;
   margin: 50px 0;
-  width: 300px;
+  width: 40vw;
+  border-radius: 15px;
   text-align: center;
   font-size: 3em;
   background-color: #ecd82b;
   opacity: 80%;
-  border-radius: 30px;
 }
 
 .composer-container {
@@ -104,3 +105,9 @@
 .button:hover {
   background-color: #0b4281;
 } */
+@media only screen and (max-width: 767px) {
+  .composer-title {
+    width: 100vw;
+    margin: 0;
+  }
+}

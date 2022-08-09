@@ -5,6 +5,7 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
+  color: #000000;
 }
 .library-title-container {
   width: 100%;
@@ -16,7 +17,8 @@
 .library-title {
   font-family: 'Homemade Apple', cursive;
   margin: 80px 0;
-  width: 100vw;
+  width: 40vw;
+  border-radius: 15px;
   text-align: center;
   font-size: 3em;
   background-color: #ecd82b;
@@ -93,5 +95,11 @@
 @media only screen and (max-width: 767px) {
   .song-items-container {
     grid-template-columns: 1fr;
+  }
+
+  .library-title {
+    width: 100vw;
+    margin: 20px 0;
+    border-radius: 0;
   }
 }
