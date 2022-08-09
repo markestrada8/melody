@@ -8,7 +8,7 @@
 }
 
 .home-title {
-  margin-top: -100px;
+  margin-top: -200px;
   margin-bottom: -20px;
   font-size: 7em;
   font-family: 'Homemade Apple', cursive;
@@ -22,7 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 400px;
+  margin-top: 300px;
 }
 
 .home-nav-link {
@@ -58,14 +58,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 100px;
   padding: 100px;
+  color: #000000;
+  max-height: 200px;
 }
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .home-container {
-    width: 100vw;
-    flex-grow: 1;
+    margin-top: 200px;
+    height: 120vh;
+    /* flex-grow: 1; */
   }
 
   #video {
@@ -75,5 +78,9 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  .hero-section {
+    color: #000000;
   }
 }

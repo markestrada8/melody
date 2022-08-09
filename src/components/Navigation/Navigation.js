@@ -5,8 +5,18 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import './Navigation.css';
 
 const Navigation = () => {
+  const [menuActive, setMenuActive] = useState(false);
+
   let activeStyle = {
     borderBottom: '3px solid #ffffff',
+  };
+
+  const handleButtonClick = () => {
+    setMenuActive(!menuActive);
+  };
+
+  const handleLinkClick = () => {
+    setMenuActive(false);
   };
 
   // let activeClassName = 'underline';
@@ -17,30 +27,45 @@ const Navigation = () => {
           <GiMusicSpell className="music-icon" />
           <h1>Melody</h1>
         </div>
-        <div className="nav-links">
-          <NavLink
-            to="/"
-            className="nav-link"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="compose"
-            className="nav-link"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Composer
-          </NavLink>
-
-          <NavLink
-            to="library"
-            className="nav-link"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Library
-          </NavLink>
+        <div className="menu-icon" onClick={handleButtonClick}>
+          {menuActive ? (
+            <FaTimes className="fa-times" />
+          ) : (
+            <FaBars className="fa-bars" />
+          )}
         </div>
+        <ul className={menuActive ? 'nav-menu active' : 'nav-menu'}>
+          <li>
+            <NavLink
+              to="/"
+              className="nav-link"
+              onClick={handleLinkClick}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="compose"
+              className="nav-link"
+              onClick={handleLinkClick}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Composer
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="library"
+              className="nav-link"
+              onClick={handleLinkClick}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Library
+            </NavLink>
+          </li>
+        </ul>
       </div>
       <Outlet />
     </div>

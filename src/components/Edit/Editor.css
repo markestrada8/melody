@@ -7,6 +7,7 @@
   justify-content: center;
   /* height: 100vh; */
   overflow-x: scroll;
+  overflow-y: scroll;
   margin: 20px;
   /* background-color: #3e3e3d; */
   margin: 0;
@@ -84,4 +85,12 @@
 
 .button:hover {
   background-color: #0b4281;
+}
+
+@media only screen and (max-width: 767px) {
+  .editor {
+    position: absolute;
+    left: 0;
+    top: 450px;
+  }
 }
