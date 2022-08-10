@@ -11,13 +11,13 @@ const Footer = () => {
         <a href="https://tonejs.github.io/">Tone.js</a>
       </div>
       <div className="social-links">
-        <a className="social-link" href="#">
+        <a className="social-link" href="https://facebook.com/">
           <BsFacebook />
         </a>
-        <a className="social-link" href="#">
+        <a className="social-link" href="https://instagram.com/">
           <BsInstagram />
         </a>
-        <a className="social-link" href="#">
+        <a className="social-link" href="https://twitter.com/">
           <BsTwitter />
         </a>
       </div>
