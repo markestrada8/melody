@@ -1,5 +1,6 @@
 .home-container {
   top: 80px;
+  margin: 10px;
   height: 100vw;
   display: flex;
   flex-direction: column;
@@ -42,7 +43,7 @@
 
 #video {
   position: absolute;
-  margin-top: -2%;
+  margin-top: -5%;
   top: 90px;
   z-index: -1;
   opacity: 0.8;
