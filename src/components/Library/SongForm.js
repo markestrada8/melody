@@ -12,6 +12,7 @@ const SongForm = ({ title, setTitle, description, setDescription }) => {
           className="add-song-input"
           onChange={(event) => setTitle(event.target.value)}
           label="Title"
+          style={{ marginTop: '20px' }}
           value={title}
           placeholder="Title"
         />
@@ -21,6 +22,7 @@ const SongForm = ({ title, setTitle, description, setDescription }) => {
           className="add-song-textarea"
           onChange={(event) => setDescription(event.target.value)}
           label="Description"
+          style={{ marginTop: '20px' }}
           value={description}
           name="description"
           placeholder="Description"
