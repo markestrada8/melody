@@ -4,9 +4,6 @@
   width: 100%;
   background-color: #1c2237;
   color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 20px 0;
   /* margin-bottom: 90px; */
 }
@@ -14,9 +11,8 @@
 .title {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .music-icon {
