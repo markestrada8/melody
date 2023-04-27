@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import backgroundVideo from '../video/pexels-james-borastero-9322934.mp4';
-import Footer from '../components/Footer/Footer';
-import './Home.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+// import backgroundVideo from '../video/pexels-james-borastero-9322934.mp4';
+import backgroundVideo from '../video/pexels-james-borastero-9322934.mp4'
+
+import Footer from '../components/Footer/Footer'
+import './Home.css'
 
 const Home = () => {
   return (
@@ -16,7 +18,7 @@ const Home = () => {
           <Link
             to="compose"
             className="home-nav-link"
-            // style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          // style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             COMPOSE
           </Link>
@@ -28,7 +30,7 @@ const Home = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
